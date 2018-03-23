@@ -1,0 +1,52 @@
+<ion-content padding class="background-content">
+  <div class="logo"><img src="assets/imgs/logo.png"/></div>
+  <ion-card>
+    <ion-card-header>
+        {{"LOGIN" | translate}}
+    </ion-card-header>
+    <ion-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label floating>
+            {{"EMAIL" | translate}}
+          </ion-label>
+          <ion-input type="email" formControlName="email" [(ngModel)]="loginModel.email"></ion-input>
+        </ion-item>
+        <error-form [hidden]="!isSubmitted" [errors]="loginForm.controls.email.errors"></error-form>
+        <ion-item>
+            <ion-label floating>
+              {{"PASSWORD" | translate}}
+            </ion-label>
+            <ion-input type="password" formControlName="password" [(ngModel)]="loginModel.password"></ion-input>
+        </ion-item>
+        <error-form [hidden]="!isSubmitted" [errors]="loginForm.controls.password.errors"></error-form>
+        <ion-item>
+          <p>
+              {{"FORGGET_PASSWORD" | translate}}
+            <a>
+                {{"CLIK_HERE" | translate}}
+            </a></p>
+        </ion-item>
+        <button type="submit" ion-button  block outline >
+          {{"LOGIN" | translate}}
+        </button>
+        </ion-list>
+      </form>
+        <b>{{"OR" | translate }}</b>
+        <button ion-button icon-left color="secondary" (click)="onFacebookLogin()"  block>
+            <ion-icon  name="logo-facebook" ></ion-icon>
+          <div>
+              {{"LOGIN_FACEBOOK" | translate}}
+          </div>
+        </button>
+        <button ion-button color="resenha" icon-left block (click)="newUser()">
+         <ion-icon item-start name="person-add"></ion-icon>
+          <div>
+              {{"CREATE_NEW_USER" | translate}}
+          </div>
+       </button>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

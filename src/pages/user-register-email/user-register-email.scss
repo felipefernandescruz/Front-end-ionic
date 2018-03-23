@@ -1,0 +1,18 @@
+page-user-register-email {
+    .background-content{
+        width: 100%;
+        height: 100%;
+        background:url("../assets/imgs/login-background.jpg"); 
+    }
+    .scroll-content{
+        text-align: center;
+    }
+    ion-card.card{
+        border-radius: 10px;
+        opacity: 0.9;
+    }
+    
+    ion-input{
+        border-bottom: #ffa500 solid 1px;
+    }
+}

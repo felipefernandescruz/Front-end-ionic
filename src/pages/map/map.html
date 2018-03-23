@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons start>
+          <button color="dark" ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+    <ion-title>{{"MAP" | translate}}</ion-title>
+    <ion-buttons end>
+        <button color="dark" ion-button icon-only (click)="onPlaceRegister()">
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div #map id="map"></div>
+</ion-content>

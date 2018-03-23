@@ -1,0 +1,53 @@
+.ios,.md{
+    page-place-register {
+        .bg{
+            background-image: url('../assets/imgs/dp.jpg');
+            height: 300px;
+            background-size: cover;
+            background-position: center center;
+            
+        }
+
+        .main-cnt{
+            width: 100%;
+            height: 70%; 
+           
+        }
+
+        ion-icon{
+            color: red;
+        }
+
+        .btn-picture{
+            margin-top: -15%;
+        }
+
+        ion-card{
+            background-color:#ecf0f1;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        ion-list ion-item{
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        button ion-icon{
+            color: orange;
+        }
+        .card-map{
+            position: relative;
+            top: -10px;
+        }
+
+      #map{
+        height: 30%;
+        width: 100%;
+        padding: 0;
+        position:relative;
+        
+       }
+
+    }
+}

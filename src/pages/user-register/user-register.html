@@ -1,0 +1,62 @@
+<ion-header>
+  
+<ion-navbar>
+  <ion-title center>
+    {{"NEW_USER" | translate}}
+  </ion-title>
+</ion-navbar>
+
+</ion-header>
+<ion-content padding class="background-content">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <ion-card>
+    <ion-card-header>
+      {{"WELCOME" | translate}}
+    </ion-card-header>
+    <ion-card-content>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-label floating>
+                  {{"NAME" | translate}}
+                </ion-label>
+                <ion-input type="text" formControlName="userName" [(ngModel)]="registerModel.name"></ion-input>
+              </ion-item>
+              <error-form [hidden]="!isSubmitted" [errors]="registerForm.controls.userName.errors"></error-form>
+            <ion-item>
+                <ion-label floating>  
+                  {{"LAST_NAME" | translate}}
+                </ion-label>
+                <ion-input type="text" formControlName="lastName" [(ngModel)]="registerModel.lastName"></ion-input>
+            </ion-item>
+            <error-form [hidden]="!isSubmitted" [errors]="registerForm.controls.lastName.errors"></error-form>
+            <ion-item>
+                <ion-label floating>  
+                  {{"EMAIL" | translate}}
+                </ion-label>
+                <ion-input type="email"formControlName="email" [(ngModel)]="registerModel.email"></ion-input>
+            </ion-item>
+            <error-form [hidden]="!isSubmitted" [errors]="registerForm.controls.email.errors"></error-form>
+            <ion-item>
+                <ion-label floating>  
+                  {{"PASSWORD" | translate}}
+                </ion-label>
+                <ion-input type="password" formControlName="password" [(ngModel)]="registerModel.password"></ion-input>
+            </ion-item>
+            <error-form [hidden]="!isSubmitted" [errors]="registerForm.controls.password.errors"></error-form>
+            <ion-item>
+                <ion-label floating> 
+                  {{"PASSWORD_CONFIRM" | translate}}
+                </ion-label>
+                <ion-input type="password" formControlName="confirmPassword" [(ngModel)]="registerModel.confirmPassword"></ion-input>
+            </ion-item>
+            <error-form [hidden]="!isSubmitted" [errors]="registerForm.controls.confirmPassword.errors"></error-form>
+            <button type="submit" ion-button  icon-left block >
+                <ion-icon name="add"></ion-icon>
+              {{"REGISTER" | translate}}
+            </button>
+        </ion-list>
+    </ion-card-content>
+  </ion-card>
+</form>
+
+</ion-content>

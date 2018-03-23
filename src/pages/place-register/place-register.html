@@ -1,0 +1,119 @@
+
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>{{"PLACE_REGISTER" | translate}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content >
+    <form [formGroup]="placeRegisterForm" (ngSubmit)="onSubmit()">
+        <div class="bg" [ngStyle]= "{'background-image': 'url('+ this.placeRegisterModel.picture + ')'}">
+    
+        </div>
+        <div class="main-cnt">        
+        </div>
+        <button ion-button class="btn-picture" (click)="accessGallery()">
+            {{"PICTURE_UPDATE" | translate}}
+        </button>
+        <ion-card>
+          <ion-card-header>
+            <h3>Informações:</h3>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-list no-lines>
+                  <ion-item>
+                      <ion-label floating>
+                        {{"NAME" | translate}}
+                        </ion-label>
+                        <ion-input type="text" formControlName="placeName" [(ngModel)]="placeRegisterModel.name"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      
+                      <ion-label floating>
+                          <ion-icon name="book" item-start></ion-icon>
+                        {{"DESCRIPTION" | translate}}
+                        </ion-label>
+                        <ion-textarea elastic type="text" formControlName="description" [(ngModel)]="placeRegisterModel.description"></ion-textarea>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label floating>
+                    {{"CAPACITY" | translate}}
+                    </ion-label>
+                    <ion-input type="number" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label>
+                        {{"PLACE_TYPE" | translate}}
+                      </ion-label>
+                      <ion-select formControlName="type" [(ngModel)]="placeRegisterModel.type" (ionChange)="onSelectChange($event)">
+                        <ion-option value="1">Privado</ion-option>
+                        <ion-option value="2">Publico</ion-option>
+                        <ion-option value="3">Comercial</ion-option>
+                      </ion-select>
+                  </ion-item>
+                  
+              </ion-list>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="isCNPJ">
+            <ion-card-header>
+              <h3>
+                {{ "CONTACT" | translate}}:
+              </h3>
+            </ion-card-header>
+            <ion-card-content>
+                <ion-list no-lines>
+                  <ion-item >
+                        <ion-label>CNPJ:</ion-label>
+                        <ion-input type="text" [brmasker]="{mask:'99.999.999/9999-99', len:18, type:'num'}"></ion-input>   
+                  </ion-item>
+                    <ion-item>
+                        <ion-label floating>
+                          {{ "EMAIL" | translate}}
+                        </ion-label>
+                        <ion-input type="email"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label floating>
+                          {{"PHONE" | translate}} 1:
+                      </ion-label>
+                      <ion-input type="text" name="phone" [brmasker]="{phone: true}"></ion-input>      
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label floating>
+                        {{ "PHONE" | translate}} 2:
+                      </ion-label>
+                      <ion-input type="text" name="phone" [brmasker]="{phone: true}"></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+          </ion-card>
+    </form>
+
+    <div #map id="map"></div>
+    <ion-card class="card-map">
+      <ion-list>
+        <ion-item>
+            <ion-icon name="locate" item-start large></ion-icon>
+            <p>{{ "ADDRESS" | translate}}:</p>
+            <p>{{ "CITY" | translate}}:</p>
+            <p>{{ "COUNTRY" | translate}}:</p>
+        </ion-item>
+        <ion-item>
+            <button ion-button icon-left clear item-end (click)="onOpenPlacesMap()">
+                <ion-icon name="navigate"></ion-icon>
+                {{ "PLACE_ADD"| translate}}
+              </button>
+        </ion-item>
+      </ion-list>  
+    </ion-card>
+
+    <button ion-button block>{{ "REGISTER" | translate}}</button>
+
+</ion-content>

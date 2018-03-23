@@ -1,0 +1,53 @@
+{
+    "ADDRESS":"Endereço",
+
+    "CAPACITY":"Capacidade",
+    "CITY":"Cidade",
+    "CLIK_HERE": "Clique aqui!",
+    "CONTACT":"Contato",
+    "COUNTRY":"País",
+    "CREATE_NEW_USER": "Criar novo usuário",
+
+    "DESCRIPTION":"Descrição",
+ 
+    "EMAIL": "Email",
+    "EMAIL_CONFIRM":"Confirmar email",
+    "EMAIL_NOT_MATCH":"Emails diferentes",
+  
+    "FAVORITE": "Favorito",
+    "FORGGET_PASSWORD": "Esqueceu a senha?",
+    "FRIENDS": "Amigos",
+
+    "INVALID_EMAIL":"Email inválido!" ,
+ 
+    "LAST_NAME": "Sobrenome",
+    "LOGIN": "Entrar",
+    "LOGIN_FACEBOOK": "Entrar com o Facebook",
+
+    "MANDATORY_FIELD":"Campo obrigatório!",
+    "MAP": "Mapa",
+    "MIN_ERROR":"Favor digite um valor maior",
+    
+    "NAME": "Nome",
+    "NEW_USER":"Novo usuário",
+
+    "OR" : "OU",
+  
+    "PASSWORD": "Senha",
+    "PASSWORD_CONFIRM": "Confirmar senha",
+    "PASSWORD_NOT_MATCH":"As senhas não são iguais",
+    "PHONE":"telefone",
+    "PICTURE_UPDATE":"Editar Foto",
+    "PLACE_ADD": "Adicionar local",
+    "PLACE_REGISTER": "Cadastrar Local",
+    "PLACE_TYPE":"Tipo do Local",
+    "PROFILE":"Perfil",
+    "PROFILE_UPDATE":"Editar Perfil",
+  
+    "REGISTER":"Cadastrar",
+    "RESENHA": "Resenha",
+
+    "USER":"Usuário",
+
+    "WELCOME":"Bem vindo ao Resenha App"   
+}

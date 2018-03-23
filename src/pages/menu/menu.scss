@@ -1,0 +1,33 @@
+page-menu {
+    .header-cnt{
+        height: 100%; 
+        background: linear-gradient(10deg,#ff0000,#ffff00);
+    }
+    .menu-dp{
+        border-radius: 70%;
+        height: 90px;
+        width: 90px;
+        z-index: 10;
+        margin-top: 60px;
+        margin-bottom: -60px;
+        position: relative;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%,-50%);
+        border-style: solid;
+        border-width: 3px;
+        border-color: red;
+    }
+    h1{
+        margin-top: 7%;
+        font-size: 14 px;
+    }
+    .perfil-edit{
+        position: relative;
+        margin-left: 40%;
+        margin-right: -60%;
+        color: rgb(101, 101, 231);
+        font-size: 12 px;
+    }
+
+}

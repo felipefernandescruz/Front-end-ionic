@@ -1,0 +1,20 @@
+<p  class="text-danger" padding-left [hidden]="!isRequiredError()">
+    {{"MANDATORY_FIELD" | translate}}
+  </p>
+  <p  class="text-danger" padding-left [hidden]="!isEmailError()">
+    {{"INVALID_EMAIL" | translate}}
+  </p>
+  <p class="text-danger" padding-left [hidden]="!isEmailNotMatch()">
+    {{"EMAIL_NOT_MATCH" | translate}}
+  </p>
+  <p class="text-danger" padding-left [hidden]="!isPasswordNotMatch()">
+    {{"PASSWORD_NOT_MATCH" | translate}}
+  </p>
+  <p class="text-danger" padding-left [hidden]="!isMinError()">
+    {{"MIN_ERROR" | translate}} {{getMinValue()}}.
+  </p>
+  <p class="text-danger" padding-left [hidden]="!isBrPhoneError()">
+    Telefone inválido
+  </p>
+
+  

@@ -1,0 +1,30 @@
+
+<ion-menu [content]="content"> 
+    <ion-header>
+        
+        <div class="header-cnt">
+            <img src="./assets/imgs/dp.jpg" class="menu-dp"/>
+            <h1 text-center>Siri</h1>
+            <a (click)="onProfileEdit()" class="perfil-edit">Editar Perfil</a>
+        </div>
+        
+    </ion-header>
+        
+        
+        <ion-content >
+          <ion-list>
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>{{p.title}}
+            </button>
+            
+          </ion-list>
+          <ion-list>
+            <button menuClose ion-item  (click)="onExit()">
+              <ion-icon item-start name="exit" ></ion-icon>Sair
+          </button>
+          </ion-list>
+        </ion-content>
+  
+  </ion-menu>
+
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>

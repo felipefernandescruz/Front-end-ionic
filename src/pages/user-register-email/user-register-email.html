@@ -1,0 +1,41 @@
+<!--
+  Generated template for the UserRegisterEmailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{"EMAIL_CONFIRM" | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="background-content">
+  <form [formGroup]="registerForm"(ngSubmit)="onSubmit()">
+    <ion-card>
+      <ion-card-header>
+        
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+            <ion-item>
+                <ion-label floating> 
+                  {{"EMAIL_CONFIRM" | translate}}
+                </ion-label>
+                <ion-input type="email" formControlName="confirmEmail" [(ngModel)]="confirmEmail"></ion-input>
+            </ion-item>
+            <error-form [hidden]="!isSubmitted" [errors]="registerForm.controls.confirmEmail.errors"></error-form>
+            <button type="submit" ion-button  icon-left block >
+                <ion-icon name="add"></ion-icon>
+              {{"REGISTER" | translate}}
+            </button>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </form>
+    
+
+</ion-content>

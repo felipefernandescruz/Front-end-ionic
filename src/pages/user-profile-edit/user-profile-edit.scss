@@ -1,0 +1,52 @@
+.ios,.md{
+    page-user-profile-edit {
+        .bg{
+            background-image: url('../assets/imgs/dp.jpg');
+            height: 300px;
+            background-size: cover;
+            filter: blur(5px);
+            background-position: center center;
+            
+        }
+
+        .main-cnt{
+            width: 100%;
+            height: 70%; 
+           
+        }
+
+        .dp{
+            border-radius: 70%;
+            height: 150px;
+            width: 150px;
+            z-index: 10;
+            margin-top: -120px;
+            position: relative;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%,-50%);
+            box-shadow: -6px 15px 81px 3px rgba(0,0,0,0.75);
+        }
+
+        ion-icon{
+            color: red;
+        }
+        
+        ion-list ion-item{
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-picture{
+            margin-top: -15%;
+        }
+        #myInput {
+            width: calc(100% - 10px);
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+        }
+        
+    }
+}
