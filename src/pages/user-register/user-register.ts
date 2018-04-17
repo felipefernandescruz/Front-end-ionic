@@ -23,7 +23,7 @@ export class UserRegisterPage extends BasePage{
     this.initFormValidators();
 
     this.registerModel = new RegisterModel();
-    this.registerModel.type = this.enumHelper.UserType().Customer.Id
+    this.registerModel.originAccess = this.enumHelper.UserType().Customer.Id;
   }
   ionViewDidLoad() {}
 

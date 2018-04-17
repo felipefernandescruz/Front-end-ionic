@@ -6,12 +6,6 @@ import { RegisterModel } from '../../models/register.model';
 import { UserProvider } from '../../providers/user/user';
 import { MenuPage } from '../menu/menu';
 
-/**
- * Generated class for the UserRegisterEmailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -28,9 +22,7 @@ export class UserRegisterEmailPage extends BasePage {
   public isSubmitted:boolean;
   constructor(protected injector: Injector, private userProvider: UserProvider) {
     super(injector);
-    console.log(this.navParams.data);
     this.registerModel = this.navParams.data;
-    console.log(this.registerModel);
     this.initFormValidators();
 
   }
@@ -51,9 +43,10 @@ export class UserRegisterEmailPage extends BasePage {
         console.log(this.registerForm.valid);
         if(this.registerForm.valid){
           if(this.confirmEmail == this.registerModel.email){
+            this.registerModel.originAccess = 3;
             this.loadingHelper.showLoading();
             
-            this.navCtrl.setRoot(MenuPage);
+           
 
             this.userProvider.register(this.registerModel)
             .subscribe(success.bind(this), error.bind(this))
@@ -64,8 +57,23 @@ export class UserRegisterEmailPage extends BasePage {
         }
     
         function success(data){
-          this.loadingHelper.hideLoading();
-          this.alertHelper.okAlert("Registro Cadastrado com sucesso");
+          console.log(data);
+          if(data.statusCode == 200){
+            this.registerModel.setUser(data);
+
+            this.storageHelper.setUser(this.registerModel);
+            console.log(this.storageHelper.getUser());
+            
+            this.navCtrl.setRoot(MenuPage);
+            this.loadingHelper.hideLoading();
+            this.toastHelper.toastPresent(data.data[0]);
+            console.log(data.message);
+          }else{
+            this.alertHelper.okAlert(data.data);
+            this.loadingHelper.hideLoading();
+          }
+          
+          
     
         }
         function error(data){

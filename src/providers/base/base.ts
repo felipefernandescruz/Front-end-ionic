@@ -12,7 +12,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class BaseProvider {
 
-  private serverUrl = 'http://localhost:2848/';
+  //private serverUrl = 'http://localhost:2848/';  
+  private serverUrl = 'http://192.168.0.238:2848/';
   
       private storageHelper: StorageHelper;
       private http: HttpClient;
@@ -39,7 +40,7 @@ export class BaseProvider {
       }
   
       protected httpPost(api: string, data: any, params: HttpParams) {
-  
+
           let url = this.serverUrl + api;
   
           let headers = new HttpHeaders();
@@ -71,7 +72,8 @@ export class BaseProvider {
       }
   
       private handleSuccess(res) {
-          return res.Data;
+          console.log(res);
+          return res;
       }
   
       private handleError(res) {

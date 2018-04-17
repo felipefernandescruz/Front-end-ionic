@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms/src/model';
 import { MenuPage } from '../menu/menu';
 import { FacebookModel } from '../../models/facebook.model';
 import { FacebookUsersProvider } from '../../providers/facebook-users/facebook-users';
-
+import { UserProvider } from '../../providers/user/user';
 
 @IonicPage()
 @Component({
@@ -21,7 +21,7 @@ export class LoginPage extends BasePage {
 
   public isSubmitted: boolean;
 
-  constructor(protected injector: Injector,private facebookUsersProvider : FacebookUsersProvider) {
+  constructor(protected injector: Injector,private facebookUsersProvider : FacebookUsersProvider, private userProvider: UserProvider) {
     super(injector);
 
     this.initFormValidators();
@@ -40,8 +40,18 @@ export class LoginPage extends BasePage {
   public onSubmit(){
     console.log("teste");
     this.isSubmitted = true;
-    if(this.loginForm.valid){     
-      this.navCtrl.setRoot(MenuPage);      
+    if(this.loginForm.valid){ 
+      this.userProvider.login(this.loginModel)
+      .subscribe(success.bind(this), error.bind(this));    
+          
+    }
+
+    function success(data){
+      console.log(data);
+      this.navCtrl.setRoot(MenuPage);  
+    }
+    function error(data){
+      console.log(data);
     }
   }
 

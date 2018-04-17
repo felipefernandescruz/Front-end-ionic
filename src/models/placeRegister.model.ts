@@ -1,8 +1,9 @@
 import { PlaceType } from '../enums/place-type.enum';
-
+import { RegisterModel } from './register.model';
 export class PlaceRegisterModel {
 
-    admin?:number;
+    key?:string;
+    admin?:RegisterModel;
     picture: any;
     name: string;
     description: string;

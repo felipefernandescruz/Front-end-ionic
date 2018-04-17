@@ -19,7 +19,7 @@
                 <ion-label floating>
                   {{"NAME" | translate}}
                 </ion-label>
-                <ion-input type="text" formControlName="userName" [(ngModel)]="registerModel.name"></ion-input>
+                <ion-input type="text" formControlName="userName" [(ngModel)]="registerModel.firstName"></ion-input>
               </ion-item>
               <error-form [hidden]="!isSubmitted" [errors]="registerForm.controls.userName.errors"></error-form>
             <ion-item>

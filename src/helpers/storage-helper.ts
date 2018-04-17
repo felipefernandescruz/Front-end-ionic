@@ -20,6 +20,12 @@ export class StorageHelper {
     }
 
     public getUserToken() {
-        return this.getUser().Token;
+        return this.getUser().token;
     }
+
+    public clearStorage(){
+        localStorage.clear();
+    }
+
+    
 }

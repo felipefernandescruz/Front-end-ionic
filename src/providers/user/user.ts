@@ -28,23 +28,28 @@ export class UserProvider extends BaseProvider {
   }
 
   public login(userData: LoginModel){
-    let params = new HttpParams()
-    .set('email',userData.email)
-    .set('password',userData.password);
+    let aux = {
+      "email": userData.email,
+      "password" : userData.password,
+      "originaccessId": 3
+    }
+    let params = new HttpParams();
 
-    return this.httpPost('ApiUser/DoLogin',null, params)
+    return this.httpPost('api/Authentication/Login',aux, params)
   }
 
   public register(userData : RegisterModel){
     let params = new HttpParams();
-
     let aux = {
-      "nomeUsuario": "Thiago",
-      "Sobrenome" : "Mendes",
-      "senha" : "84424643674783"
-    
+      "first_name": userData.firstName,
+       "last_name": userData.lastName , 
+       "email" : userData.email, 
+       "password":userData.password,
+       "confirmPassword": userData.confirmPassword,
+       "originaccessId": userData.originAccess
+
     };
-    return this.httpPost('api/Authentica/Cadastro', aux, params);
+    return this.httpPost('api/Authentication/Register/', aux, params);
   }
 
 }

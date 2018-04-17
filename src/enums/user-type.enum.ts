@@ -1,6 +1,6 @@
 export class UserType {
     
-        public static readonly Customer = new UserType(1, "CUSTOMER");
+        public static readonly Customer = new UserType(3, "CUSTOMER");
         public static readonly Facebook = new UserType(2, "FACEBOOK");
     
         public Id: number;

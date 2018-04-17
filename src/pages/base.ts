@@ -5,6 +5,7 @@ import { AlertHelper } from '../helpers/alert-helper'
 import { EnumHelper } from '../helpers/enum-helper';
 import { LoadingHelper } from './../helpers/loading-helper';
 import { StorageHelper } from '../helpers/storage-helper';
+import { ToastCtrl } from '../helpers/toast-ctrl';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -30,6 +31,7 @@ export class BasePage {
     protected enumHelper: EnumHelper;
     public loadingHelper: LoadingHelper;
     protected storageHelper: StorageHelper
+    protected toastHelper: ToastCtrl;
 
     //ionic-angular
     protected actionSheetCtrl: ActionSheetController;
@@ -61,6 +63,7 @@ export class BasePage {
         this.enumHelper = this.injector.get(EnumHelper);
         this.loadingHelper = this.injector.get(LoadingHelper);
         this.storageHelper = this.injector.get(StorageHelper);
+        this.toastHelper = this.injector.get(ToastCtrl);
 
         //ionic-angular
         this.modalCtrl = this.injector.get(ModalController);

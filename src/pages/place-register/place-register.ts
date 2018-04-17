@@ -5,7 +5,7 @@ import { PlaceRegisterModel } from '../../models/placeRegister.model';
 import { FormGroup } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PlaceRegisterMapPage } from '../place-register-map/place-register-map';
-
+import {} from '@types/googlemaps';
 
 @IonicPage()
 @Component({

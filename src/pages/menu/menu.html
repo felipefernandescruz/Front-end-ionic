@@ -3,8 +3,8 @@
     <ion-header>
         
         <div class="header-cnt">
-            <img src="./assets/imgs/dp.jpg" class="menu-dp"/>
-            <h1 text-center>Siri</h1>
+            <img [src]="this.mainPicture" class="menu-dp"/>
+            <h1 text-center>{{this.userName}}</h1>
             <a (click)="onProfileEdit()" class="perfil-edit">Editar Perfil</a>
         </div>
         

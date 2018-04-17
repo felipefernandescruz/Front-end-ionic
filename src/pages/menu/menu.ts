@@ -25,11 +25,16 @@ export interface PageInterface{
 })
 export class MenuPage extends BasePage {
 
+  private mainPicture : string;
+  private userName : string;
 
   constructor(protected injector : Injector) {
     super(injector);
   }
-
+  ionViewDidLoad() {
+    this.mainPicture = this.storageHelper.getUser().picture;
+    this.userName = this.storageHelper.getUser().userName;
+  }
   rootPage = TabsPage;
 
   @ViewChild(Nav) nav:Nav;
@@ -74,6 +79,7 @@ export class MenuPage extends BasePage {
        return;
   }
   private onExit(){
+        this.storageHelper.clearStorage();
         this.navCtrl.setRoot(LoginPage);
   }
   
