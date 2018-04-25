@@ -10,7 +10,7 @@ export class ProfileModel {
     constructor() {
         this.name = '';
         this.lastName='';
-        this.picture = "./assets/imgs/dp.jpg";
+        this.picture = "";
         this.description = '';
         this.facebook = 0;
         this.instagram = 0;

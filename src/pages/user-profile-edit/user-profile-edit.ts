@@ -17,7 +17,7 @@ export class UserProfileEditPage extends BasePage{
 
   public isSubmitted: boolean;
 
-  public base64Image:any = "./assets/imgs/dp.jpg";
+  public base64Image:any = this.storageHelper.getUser().picture;
   
   constructor(protected injector: Injector, private camera : Camera ) {
     super(injector);
@@ -25,6 +25,7 @@ export class UserProfileEditPage extends BasePage{
     this.initFormValidators();
 
     this.profileModel = new ProfileModel();
+    this.profileModel.picture =this.storageHelper.getUser().picture;
   }
 
   ionViewDidLoad() {}

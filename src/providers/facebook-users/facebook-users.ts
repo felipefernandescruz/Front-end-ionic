@@ -17,21 +17,32 @@ export class FacebookUsersProvider extends BaseProvider{
   }
 
    public onFacebookLogin(facebookModel : FacebookModel){
-     this.facebook.login(['public_profile', 'user_friends', 'email'])
-     .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-     .catch(e => console.log('Error logging into Facebook', e));
-  
+    let params = new HttpParams();
+    let aux = {
+      "first_name": facebookModel.firstName,
+      "last_name": facebookModel.lastName , 
+      "email" : facebookModel.email, 
+      "password":facebookModel.password,
+      "confirmPassword": facebookModel.confirmPassword,
+      "facebookId": facebookModel.facebookId,
+      "originaccessId": facebookModel.originaccessId,
+      "picture": facebookModel.picture,
+      "username": facebookModel.userName
+    };
+    return this.httpPost('api/Authentication/login/', aux, params);
    }
 
    public onFaceLogin(successCallback, errorCallback){
     
     this.facebook.login(['public_profile', 'user_friends', 'email', 'user_events'])
     .then((res: FacebookLoginResponse) => {
-        this.facebook.api('me?fields=id,name,email,events,first_name,last_name,picture.width(720).height(720).as(picture_large)',[])
+      console.log(res);
+        this.facebook.api('me?fields=id,name,email,events,first_name,last_name,link,picture.width(720).height(720).as(picture_large)',[])
         .then(profile => {
+            console.log(profile);
             let userData = {email: profile.email,first_name: profile.first_name,last_name: profile.last_name, facebookId:profile.id,
-            picture: profile['picture_large']['data']['url'], username: profile['name']};
-
+            picture: profile['picture_large']['data']['url'], username: profile['name'], link: profile.link};
+              console.log(userData);
             successCallback(userData);
         });
         console.log('Logged into Facebook!', res)

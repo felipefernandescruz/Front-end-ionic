@@ -13,7 +13,7 @@ import 'rxjs/Rx';
 export class BaseProvider {
 
   //private serverUrl = 'http://localhost:2848/';  
-  private serverUrl = 'http://192.168.0.238:2848/';
+  private serverUrl = 'http://192.168.0.3:2849/';
   
       private storageHelper: StorageHelper;
       private http: HttpClient;

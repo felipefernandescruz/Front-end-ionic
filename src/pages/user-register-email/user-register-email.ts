@@ -45,9 +45,6 @@ export class UserRegisterEmailPage extends BasePage {
           if(this.confirmEmail == this.registerModel.email){
             this.registerModel.originAccess = 3;
             this.loadingHelper.showLoading();
-            
-           
-
             this.userProvider.register(this.registerModel)
             .subscribe(success.bind(this), error.bind(this))
           }else{
@@ -57,17 +54,12 @@ export class UserRegisterEmailPage extends BasePage {
         }
     
         function success(data){
-          console.log(data);
           if(data.statusCode == 200){
             this.registerModel.setUser(data);
-
-            this.storageHelper.setUser(this.registerModel);
-            console.log(this.storageHelper.getUser());
-            
+            this.storageHelper.setUser(this.registerModel);  
             this.navCtrl.setRoot(MenuPage);
             this.loadingHelper.hideLoading();
             this.toastHelper.toastPresent(data.data[0]);
-            console.log(data.message);
           }else{
             this.alertHelper.okAlert(data.data);
             this.loadingHelper.hideLoading();

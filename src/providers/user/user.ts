@@ -46,7 +46,8 @@ export class UserProvider extends BaseProvider {
        "email" : userData.email, 
        "password":userData.password,
        "confirmPassword": userData.confirmPassword,
-       "originaccessId": userData.originAccess
+       "originaccessId": userData.originAccess,
+       "picture": "./assets/imgs/profile-picture.png"
 
     };
     return this.httpPost('api/Authentication/Register/', aux, params);
