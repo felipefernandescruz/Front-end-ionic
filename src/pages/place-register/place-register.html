@@ -101,9 +101,9 @@
       <ion-list>
         <ion-item>
             <ion-icon name="locate" item-start large></ion-icon>
-            <p>{{ "ADDRESS" | translate}}:</p>
-            <p>{{ "CITY" | translate}}:</p>
-            <p>{{ "COUNTRY" | translate}}:</p>
+            <p text-wrap id="placeRegisterAddress">{{ "ADDRESS" | translate}}:</p>
+            <p text-wrap id="placeRegisterCity">{{ "CITY" | translate}}:</p>
+            <p text-wrap id="placeRegisterCountry">{{ "COUNTRY" | translate}}:</p>
         </ion-item>
         <ion-item>
             <button ion-button icon-left clear item-end (click)="onOpenPlacesMap()">

@@ -9,7 +9,7 @@ export class PlaceRegisterModel {
     description: string;
     capacity: number;
     
-    location:{
+    location?:{
         lat:number,
         lng:number
     };
@@ -25,6 +25,13 @@ export class PlaceRegisterModel {
         this.location = null;
         this.admin = null;
         this.type = null;
+    //    this.location = null;
   //      this.permission = new PlaceType(0,"no Definition");
+    }
+
+    public newLocation(lat:number,lng:number){
+
+        this.location = {lat:lat,lng:lng};
+        console.log(this.location);
     }
 }

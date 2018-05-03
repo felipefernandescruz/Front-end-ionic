@@ -108,8 +108,13 @@ export class LoginPage extends BasePage {
         });
   }
 
-  newUser(){
+
+  public newUser(){
     this.navCtrl.push(UserRegisterPage);
+  }
+
+  public designDev(){
+    this.navCtrl.push(MenuPage);
   }
 
 }

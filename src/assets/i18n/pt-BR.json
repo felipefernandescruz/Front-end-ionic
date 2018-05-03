@@ -1,6 +1,7 @@
 {
     "ADDRESS":"Endereço",
 
+    "CANCEL":"Cancelar",
     "CAPACITY":"Capacidade",
     "CITY":"Cidade",
     "CLIK_HERE": "Clique aqui!",
@@ -8,6 +9,7 @@
     "COUNTRY":"País",
     "CREATE_NEW_USER": "Criar novo usuário",
 
+    "DEFINE_PLACE":"Definir Local",
     "DESCRIPTION":"Descrição",
  
     "EMAIL": "Email",
@@ -26,6 +28,7 @@
 
     "MANDATORY_FIELD":"Campo obrigatório!",
     "MAP": "Mapa",
+    "MARK_PLACE":"Marcar Local",
     "MIN_ERROR":"Favor digite um valor maior",
     
     "NAME": "Nome",
