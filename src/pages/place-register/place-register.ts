@@ -136,7 +136,7 @@ export class PlaceRegisterPage extends BasePage{
       map: this.map,
       icon: image,
     });
-    this.findAddressLatLng(this.geocoder,this.map, this.userLocation.lat+','+this.userLocation.lng);
+    this.findAddressLatLng(this.geocoder,this.map, this.placeRegisterModel.location.lat+','+this.placeRegisterModel.location.lng);
   }
 
   private findAddressLatLng(geocoder, map ,latLng){

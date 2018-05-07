@@ -8,6 +8,6 @@ import { PlaceRegisterMapPage } from './place-register-map';
   ],
   imports: [
     IonicPageModule.forChild(PlaceRegisterMapPage),
-  ],
+  ]
 })
 export class PlaceRegisterMapPageModule {}

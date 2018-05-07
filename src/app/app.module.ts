@@ -46,7 +46,6 @@ import { PlaceRegisterPage } from '../pages/place-register/place-register';
 import { PlaceRegisterMapPage } from '../pages/place-register-map/place-register-map';
 
 
-
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -72,7 +71,7 @@ export function createTranslateLoader(http: HttpClient) {
 
     MapPage,
     PlaceRegisterPage,
-    PlaceRegisterMapPage
+    PlaceRegisterMapPage,
   ],
   imports: [
     BrMaskerModule,
@@ -114,7 +113,8 @@ export function createTranslateLoader(http: HttpClient) {
 
     MapPage,
     PlaceRegisterPage,
-    PlaceRegisterMapPage
+    PlaceRegisterMapPage,
+    
   ],
   providers: [
     Facebook,
@@ -136,9 +136,7 @@ export function createTranslateLoader(http: HttpClient) {
     UserProvider,
     FacebookUsersProvider,
     StorageProvider,
-    DatePipe
-
-
+    DatePipe,
 
   ]
 })

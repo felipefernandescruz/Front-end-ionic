@@ -60,6 +60,8 @@ export class PlaceRegisterMapPage extends BasePage{
         map: this.map,
         icon: image,
       });
+
+      this.findAddressLatLng(this.geocoder,this.map, lat+','+ lng);
   }
 
   private setUpMark(){
@@ -149,38 +151,47 @@ export class PlaceRegisterMapPage extends BasePage{
 
 
 
-  private updateSearch(){
+ 
+  private chooseItem(item: any) {
+    console.log(item);
+    this.geocodeAddress(item, this.map);
+    this.autocomplete.query='';
+    this.autocompleteItems=[];
+  }
+  
+  private updateSearch() {
     if (this.autocomplete.query == '') {
       this.autocompleteItems = [];
       return;
-     }
- 
-     let me = this;
-     this.service.getPlacePredictions({
-     input: this.autocomplete.query,
-     componentRestrictions: {
-       country: 'de'
-     }
-    }, (predictions, status) => {
-      me.autocompleteItems = [];
- 
-    me.zone.run(() => {
-      if (predictions != null) {
-         predictions.forEach((prediction) => {
-           me.autocompleteItems.push(prediction.description);
-         });
+    }
+    let me = this;
+    this.service.getPlacePredictions({ input: this.autocomplete.query, componentRestrictions: {country: 'BR'} }, function (predictions, status) {
+      me.autocompleteItems = []; 
+      me.zone.run(function () {
+        if(predictions){
+          predictions.forEach(function (prediction) {       
+              me.autocompleteItems.push(prediction.description);     
+          });
         }
       });
     });
   }
 
-  private geoCode(address:any) {
-    let geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'address': address }, (results, status) => {
-    let latitude = results[0].geometry.location.lat();
-    let longitude = results[0].geometry.location.lng();
-    alert("lat: " + latitude + ", long: " + longitude);
-   });
- }
+  private geocodeAddress(address: string, geoMap:any ){
+
+    this.geocoder.geocode({'address': address}, function(results, status) {
+      if (status === 'OK') {
+        if(results[0]){
+          geoMap.setCenter(results[0].geometry.location);
+        }else{
+          window.alert('Lugar não encontrado!');
+        }
+      //  document.getElementById("addressResenhaMap").innerHTML = "Endereço: "+ results[0].formatted_address;
+      } else {
+        window.alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+  
+}
 
 }
