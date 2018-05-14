@@ -16,7 +16,7 @@ export class StorageHelper {
     }
 
     public getUserId() {
-        return "600fa732-3105-411d-b167-d9cf0d8cd014";
+        return JSON.parse(localStorage.getItem('userId'));
     }
 
     public getUserToken() {

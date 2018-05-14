@@ -19,4 +19,32 @@ page-place-register-map {
         pointer-events: none; /* This disables clicks on the marker. Not fully supported by all major browsers, though */
         background-repeat: no-repeat;
     }
+
+    ion-icon{
+        color: red;
+    }
+
+   
+ 
+
+    button ion-icon{
+        color: orange;
+    }
+    .card-map{
+        position: relative;
+        top: -10px;
+        border-radius: 10px;
+        background-color: #ecf0f1;
+    }
+    .card-map ion-list {
+        
+        background-color: #ecf0f1;
+        margin-bottom: 10px;
+    }
+    .card-map ion-list ion-item{
+        background-color: #ecf0f1;
+        
+        margin-bottom: 10px;
+    }
+
 }

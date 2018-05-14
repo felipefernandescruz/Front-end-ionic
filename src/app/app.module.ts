@@ -44,6 +44,7 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { UserProfileEditPage } from '../pages/user-profile-edit/user-profile-edit';
 import { PlaceRegisterPage } from '../pages/place-register/place-register';
 import { PlaceRegisterMapPage } from '../pages/place-register-map/place-register-map';
+import { PlaceProvider } from '../providers/place/place';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -137,6 +138,7 @@ export function createTranslateLoader(http: HttpClient) {
     FacebookUsersProvider,
     StorageProvider,
     DatePipe,
+    PlaceProvider,
 
   ]
 })

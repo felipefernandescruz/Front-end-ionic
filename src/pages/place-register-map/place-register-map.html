@@ -25,9 +25,13 @@
             <p text-wrap id="placeRegisterMapCity">{{ "CITY" | translate}}:</p>
             <p text-wrap id="placeRegisterMapCountry">{{ "COUNTRY" | translate}}: -</p>
         </ion-item>
-        <button ion-button icon-left (click)="setUpMark()" outline>
-          <ion-icon item-start name="flag"></ion-icon>
-          {{"MARK_PLACE" | translate }}</button>
+        <ion-item>
+            <button ion-button icon-left (click)="setUpMark()" item-end outline>
+                <ion-icon item-start name="flag"></ion-icon>
+                {{"MARK_PLACE" | translate }}
+            </button>
+        </ion-item>
+
       </ion-list>
     </ion-card>
     

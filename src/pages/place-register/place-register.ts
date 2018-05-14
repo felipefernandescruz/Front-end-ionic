@@ -1,11 +1,13 @@
 import { Component, Injector, ViewChild } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, Platform } from 'ionic-angular';
 import { BasePage } from '../base';
 import { PlaceRegisterModel } from '../../models/placeRegister.model';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PlaceRegisterMapPage } from '../place-register-map/place-register-map';
+import { PlaceProvider } from '../../providers/place/place';
 import {} from '@types/googlemaps';
+import { Camera } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -21,12 +23,16 @@ export class PlaceRegisterPage extends BasePage{
   public placeRegisterForm: FormGroup;
 
   public isSubmitted: boolean;
+
   public isCNPJ : boolean;
 
   //MAP
   private userLocation:{lat:number, lng:number, mark:number } = {lat:0,lng : 0, mark : 1};
   public marker: any;
-  constructor(protected injector : Injector, private geolocation: Geolocation) {
+  constructor(protected injector : Injector, private geolocation: Geolocation, 
+              private placeProvider : PlaceProvider, private platform: Platform,
+              private camera : Camera) {
+    
     super(injector);
 
     this.initFormValidators();
@@ -34,6 +40,7 @@ export class PlaceRegisterPage extends BasePage{
     this.placeRegisterModel = new PlaceRegisterModel();
 
   }
+
   ionViewDidLoad() {
     console.log(this.placeRegisterModel)
     if(this.placeRegisterModel.location == null){
@@ -41,22 +48,24 @@ export class PlaceRegisterPage extends BasePage{
     }else{
       this.initMap(this.placeRegisterModel.location.lat,this.placeRegisterModel.location.lng);
     }
-    
   }
 
   private initFormValidators(){
     this.placeRegisterForm = this.formBuilder.group({
       placeName: ['', this.validators.compose([this.validators.required])],
       description: ['', this.validators.compose([this.validators.required])],
-      location: ['', this.validators.compose([this.validators.required])],
       capacity: ['', this.validators.compose([this.validators.required])],
       type:['', this.validators.compose([this.validators.required])],
-      email:['',this.validators.compose([this.validators.email])]
+      //location: ['', this.validators.compose([this.validators.required])],
+     // email:['',this.validators.compose([this.validators.email])]
     });
   }
 
-  private onSetGeolocation(){
-    this.geolocation.getCurrentPosition().then((resp) => {
+  
+
+  private async onSetGeolocation(){
+    await this.platform.ready();
+    this.geolocation.getCurrentPosition({enableHighAccuracy : true, timeout: 50000}).then((resp) => {
       this.userLocation = {lat:resp.coords.latitude, lng: resp.coords.longitude, mark:1};
 
       console.log(this.userLocation.lat,this.userLocation.lng);
@@ -90,6 +99,18 @@ export class PlaceRegisterPage extends BasePage{
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.geocoder = new google.maps.Geocoder;
+  }
+
+  public accessGallery(){  
+    this.camera.getPicture({
+      sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+      destinationType: this.camera.DestinationType.DATA_URL
+    }).then((imageData) => {
+      this.placeRegisterModel.picture = 'data:image/jpeg;base64,'+imageData;
+  //    this.alertHelper.okAlert("atualizou");
+    }, (err)=> {
+      console.log(err);
+    });
   }
 
   private onSelectChange(selectedValue: any) {
@@ -184,6 +205,15 @@ export class PlaceRegisterPage extends BasePage{
     });  
   }
 
-  
-
+  public onSubmit(){
+    
+      this.isSubmitted = true;
+      if(this.placeRegisterForm.valid){     
+        if(this.placeRegisterModel.location){
+          this.placeProvider.register(this.placeRegisterModel);
+        }else{
+          this.alertHelper.errorAlert("Favor adicionar o local");
+        }
+      } 
+  }
 }

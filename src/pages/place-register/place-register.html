@@ -30,20 +30,24 @@
                         </ion-label>
                         <ion-input type="text" formControlName="placeName" [(ngModel)]="placeRegisterModel.name"></ion-input>
                   </ion-item>
-                  <ion-item>
-                      
+                  <error-form [hidden]="!isSubmitted" [errors]="placeRegisterForm.controls.placeName.errors"></error-form>
+                 
+                  <ion-item>           
                       <ion-label floating>
-                          <ion-icon name="book" item-start></ion-icon>
                         {{"DESCRIPTION" | translate}}
                         </ion-label>
                         <ion-textarea elastic type="text" formControlName="description" [(ngModel)]="placeRegisterModel.description"></ion-textarea>
                   </ion-item>
+                  <error-form [hidden]="!isSubmitted" [errors]="placeRegisterForm.controls.description.errors"></error-form>
+                  
                   <ion-item>
                     <ion-label floating>
                     {{"CAPACITY" | translate}}
                     </ion-label>
-                    <ion-input type="number" ></ion-input>
+                    <ion-input type="number" formControlName="capacity" [(ngModel)]="placeRegisterModel.capacity" ></ion-input>
                   </ion-item>
+                  <error-form [hidden]="!isSubmitted" [errors]="placeRegisterForm.controls.capacity.errors"></error-form>
+
                   <ion-item>
                       <ion-label>
                         {{"PLACE_TYPE" | translate}}
@@ -54,8 +58,9 @@
                         <ion-option value="3">Comercial</ion-option>
                       </ion-select>
                   </ion-item>
-                  
               </ion-list>
+              <error-form [hidden]="!isSubmitted" [errors]="placeRegisterForm.controls.type.errors"></error-form>
+
           </ion-card-content>
         </ion-card>
 
@@ -94,7 +99,7 @@
                 </ion-list>
             </ion-card-content>
           </ion-card>
-    </form>
+        </form>
 
     <div #map id="map"></div>
     <ion-card class="card-map">
@@ -106,14 +111,18 @@
             <p text-wrap id="placeRegisterCountry">{{ "COUNTRY" | translate}}:</p>
         </ion-item>
         <ion-item>
-            <button ion-button icon-left clear item-end (click)="onOpenPlacesMap()">
+            <button ion-button outline icon-left item-end (click)="onOpenPlacesMap()">
                 <ion-icon name="navigate"></ion-icon>
                 {{ "PLACE_ADD"| translate}}
               </button>
         </ion-item>
+        
       </ion-list>  
     </ion-card>
-
-    <button ion-button block>{{ "REGISTER" | translate}}</button>
-
+    <form [formGroup]="placeRegisterForm" (ngSubmit)="onSubmit()">
+    <button type="submit" ion-button  icon-left block >
+        <ion-icon name="add"></ion-icon>
+      {{"REGISTER" | translate}}
+    </button>
+  </form>
 </ion-content>

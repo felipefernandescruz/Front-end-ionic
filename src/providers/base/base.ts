@@ -15,7 +15,7 @@ export class BaseProvider {
   //private serverUrl = 'http://localhost:2848/';  
   private serverUrl = 'http://192.168.0.2:2849/';
   
-      private storageHelper: StorageHelper;
+      protected storageHelper: StorageHelper;
       private http: HttpClient;
   
       constructor(protected injector: Injector) {
