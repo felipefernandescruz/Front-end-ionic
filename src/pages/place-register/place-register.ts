@@ -149,7 +149,7 @@ export class PlaceRegisterPage extends BasePage{
     if(this.marker){
       this.marker.setMap(null);
     }
-    let image="../assets/imgs/logo-mark-resenha-p.png";
+    let image="assets/imgs/logo-mark-resenha-p.png";
     let latLng = new google.maps.LatLng(this.placeRegisterModel.location.lat,this.placeRegisterModel.location.lng);
     this.map.setCenter(latLng);
     this.marker = new google.maps.Marker({

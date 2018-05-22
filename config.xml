@@ -82,6 +82,12 @@
     <allow-navigation href="http://192.168.0.2:8100" />
     <allow-navigation href="http://169.254.109.225:8100" />
     <allow-navigation href="http://192.168.0.2:8101" />
+    <allow-navigation href="http://192.168.1.4:8100" />
+    <allow-navigation href="http://192.168.0.238:8100" />
+    <allow-navigation href="http://192.168.0.33:8100" />
+    <allow-navigation href="http://192.168.0.36:8100" />
+    <allow-navigation href="http://192.168.0.83:8100" />
+    <allow-navigation href="http://192.168.0.91:8100" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-facebook4" spec="^1.7.4">
         <variable name="APP_ID" value="182785095630827" />
@@ -91,19 +97,13 @@
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <allow-navigation href="http://192.168.1.4:8100" />
-    <allow-navigation href="http://192.168.0.238:8100" />
-    <allow-navigation href="http://192.168.0.33:8100" />
-    <engine name="ios" spec="4.5.4" />
     <plugin name="cordova-plugin-camera" spec="^2.4.1">
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value=" " />
     </plugin>
-    <allow-navigation href="http://192.168.0.36:8100" />
-    <engine name="android" spec="~6.4.0" />
-    <allow-navigation href="http://192.168.0.83:8100" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <allow-navigation href="http://192.168.0.91:8100" />
+    <engine name="ios" spec="~4.5.4" />
+    <engine name="android" spec="~6.4.0" />
 </widget>

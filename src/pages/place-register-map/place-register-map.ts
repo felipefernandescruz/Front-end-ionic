@@ -14,6 +14,7 @@ export class PlaceRegisterMapPage extends BasePage{
   private map : any;
   private geocoder:any;
   private service = new google.maps.places.AutocompleteService();
+  public autocompleteSearch: boolean = false;
 
   private userLocation: {lat: number , lng: number, mark:number} = {lat: 0 , lng: 0, mark:0};;
 
@@ -46,14 +47,16 @@ export class PlaceRegisterMapPage extends BasePage{
       zoom:15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDoubleClickZoom: true,
-
+      streetViewControl:false,
+      zoomControl:false,
+      fullscreenControl:false,
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.geocoder = new google.maps.Geocoder;
   }
 
   private initMark(lat:number, lng:number){
-      let image="../assets/imgs/logo-mark-resenha-p.png";
+      let image="assets/imgs/logo-mark-resenha-p.png";
       let latLng = new google.maps.LatLng(lat,lng);
       this.marker = new google.maps.Marker({
         position: latLng,
@@ -69,13 +72,20 @@ export class PlaceRegisterMapPage extends BasePage{
       if(this.marker){
         this.marker.setMap(null);
       }
-        let image="../assets/imgs/logo-mark-resenha-p.png";
+      let image="assets/imgs/logo-mark-resenha-p.png";
+//      let image="assets/imgs/logo.png";
         let latLng = this.map.getCenter();
-        this.marker = new google.maps.Marker({
-        position: latLng,
-        map: this.map,
-        icon: image,
-      });
+        try{
+          this.marker = new google.maps.Marker({
+            position: latLng,
+            map: this.map,
+            icon: image,
+          });
+        }catch(error){
+          this.alertHelper.errorAlert(error);
+        }
+        
+      console.log(this.marker);
       this.userLocation.mark = 1;
       this.userLocation.lat = this.marker.getPosition().lat();
       this.userLocation.lng = this.marker.getPosition().lng();
@@ -153,7 +163,7 @@ export class PlaceRegisterMapPage extends BasePage{
 
  
   private chooseItem(item: any) {
-    console.log(item);
+    this.autocompleteSearch=false;
     this.geocodeAddress(item, this.map);
     this.autocomplete.query='';
     this.autocompleteItems=[];
@@ -162,7 +172,10 @@ export class PlaceRegisterMapPage extends BasePage{
   private updateSearch() {
     if (this.autocomplete.query == '') {
       this.autocompleteItems = [];
+      this.autocompleteSearch=false;
       return;
+    }else{
+      this.autocompleteSearch=true;
     }
     let me = this;
     this.service.getPlacePredictions({ input: this.autocomplete.query, componentRestrictions: {country: 'BR'} }, function (predictions, status) {

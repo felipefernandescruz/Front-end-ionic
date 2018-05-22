@@ -1,20 +1,28 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons left large>
+        <button  ion-button  (click)="onCancel()" >
+          <ion-icon color="dark" name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
+ 
+     
       <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()">
           
       </ion-searchbar>
-      
+      <ion-list *ngIf="autocompleteSearch">
+          <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
+            {{ item }}
+          </ion-item>
+      </ion-list>
   </ion-toolbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <ion-list>
-        <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
-          {{ item }}
-        </ion-item>
-      </ion-list>
+<ion-content >
+  
+   
 
   <div #map id="map"></div>
     <ion-card class="card-map">
@@ -25,16 +33,15 @@
             <p text-wrap id="placeRegisterMapCity">{{ "CITY" | translate}}:</p>
             <p text-wrap id="placeRegisterMapCountry">{{ "COUNTRY" | translate}}: -</p>
         </ion-item>
-        <ion-item>
-            <button ion-button icon-left (click)="setUpMark()" item-end outline>
-                <ion-icon item-start name="flag"></ion-icon>
-                {{"MARK_PLACE" | translate }}
-            </button>
-        </ion-item>
+      
 
       </ion-list>
+      <button class="btn_define_place" ion-button (click)="onPlaceRegister()" item-start round color="secondary">
+          {{"DEFINE_PLACE" | translate }}
+        </button>
+      <button class="btn_mark_place" ion-button icon-left round (click)="setUpMark()" item-end outline>
+          <ion-icon item-start name="flag"></ion-icon>
+          {{"MARK_PLACE" | translate }}
+      </button>
     </ion-card>
-    
-    <button ion-button (click)="onPlaceRegister()" block color="secondary">{{"DEFINE_PLACE" | translate }}</button>
-      <button ion-button (click)="onCancel()" block color="danger">{{"CANCEL" | translate }}</button>
 </ion-content>
