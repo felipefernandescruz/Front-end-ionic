@@ -3,7 +3,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { DatePipe} from '@angular/common';
 
 import { ComponentsModule } from '../components/components.module';
 import { DirectivesModule } from '../directives/directives.module';
@@ -24,7 +23,7 @@ import { BrMaskerModule } from 'brmasker-ionic-3';
 import { BaseProvider } from '../providers/base/base';
 import { UserProvider } from '../providers/user/user';
 import { FacebookUsersProvider } from '../providers/facebook-users/facebook-users';
-import { StorageProvider } from '../providers/storage/storage';
+import { PlaceProvider } from '../providers/place/place';
 
 import { AlertHelper } from '../helpers/alert-helper';
 import { EnumHelper } from '../helpers/enum-helper';
@@ -44,7 +43,8 @@ import { UserProfilePage } from '../pages/user-profile/user-profile';
 import { UserProfileEditPage } from '../pages/user-profile-edit/user-profile-edit';
 import { PlaceRegisterPage } from '../pages/place-register/place-register';
 import { PlaceRegisterMapPage } from '../pages/place-register-map/place-register-map';
-import { PlaceProvider } from '../providers/place/place';
+import { ResenhaRegisterPage } from '../pages/resenha-register/resenha-register';
+
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -60,6 +60,7 @@ export function createTranslateLoader(http: HttpClient) {
     MenuPage,
 
     ResenhaPage,
+    ResenhaRegisterPage,
 
     FavoritePage,
 
@@ -102,6 +103,7 @@ export function createTranslateLoader(http: HttpClient) {
     MenuPage,
 
     ResenhaPage,
+    ResenhaRegisterPage,
 
     FavoritePage,
 
@@ -136,8 +138,6 @@ export function createTranslateLoader(http: HttpClient) {
     BaseProvider,
     UserProvider,
     FacebookUsersProvider,
-    StorageProvider,
-    DatePipe,
     PlaceProvider,
 
   ]

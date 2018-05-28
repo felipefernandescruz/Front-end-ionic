@@ -2,11 +2,10 @@ import { Component, Injector, ViewChild } from '@angular/core';
 import { IonicPage, Platform } from 'ionic-angular';
 import { BasePage } from '../base';
 import { PlaceRegisterModel } from '../../models/placeRegister.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Geolocation } from '@ionic-native/geolocation';
 import { PlaceRegisterMapPage } from '../place-register-map/place-register-map';
 import { PlaceProvider } from '../../providers/place/place';
-import {} from '@types/googlemaps';
 import { Camera } from '@ionic-native/camera';
 
 @IonicPage()
@@ -210,10 +209,21 @@ export class PlaceRegisterPage extends BasePage{
       this.isSubmitted = true;
       if(this.placeRegisterForm.valid){     
         if(this.placeRegisterModel.location){
-          this.placeProvider.register(this.placeRegisterModel);
+          this.placeProvider.register(this.placeRegisterModel)
+          .subscribe(success.bind(this), error.bind(this))
         }else{
           this.alertHelper.errorAlert("Favor adicionar o local");
         }
       } 
+
+      function success(data){
+        this.alertHelper.okAlert("funcionou");
+      }
+
+      function error(data){
+        console.log(data);
+        this.alertHelper.errorAlert(data);
+      }
+
   }
 }

@@ -1,4 +1,3 @@
-import { PlaceType } from '../enums/place-type.enum';
 import { RegisterModel } from './register.model';
 export class PlaceRegisterModel {
 

@@ -1,4 +1,3 @@
-import { UserType } from '../enums/user-type.enum';
 
 export class RegisterModel {
 

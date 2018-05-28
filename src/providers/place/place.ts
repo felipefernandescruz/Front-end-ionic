@@ -30,6 +30,7 @@ export class PlaceProvider extends BaseProvider{
 
     console.log(aux);
     console.log(this.storageHelper.getUser());
+    return this.httpPost('api/Place/Register/', aux, params);
 
   }
 

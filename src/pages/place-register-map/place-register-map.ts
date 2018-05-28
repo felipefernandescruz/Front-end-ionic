@@ -73,7 +73,6 @@ export class PlaceRegisterMapPage extends BasePage{
         this.marker.setMap(null);
       }
       let image="assets/imgs/logo-mark-resenha-p.png";
-//      let image="assets/imgs/logo.png";
         let latLng = this.map.getCenter();
         try{
           this.marker = new google.maps.Marker({
@@ -117,15 +116,25 @@ export class PlaceRegisterMapPage extends BasePage{
             country: results[0].address_components[6].long_name,
           };
         }else{
-  
-         address={
-            num: results[0].address_components[0].long_name,
-            street: results[0].address_components[1].long_name,
-            neighborhood: results[0].address_components[2].long_name ,
-            city: results[0].address_components[3].long_name ,
-            state: results[0].address_components[4].short_name,
-            country: results[0].address_components[5].long_name,
-          };
+          if(results[0].address_components.length == 6){
+            address={
+                num: results[0].address_components[0].long_name,
+                street: results[0].address_components[1].long_name,
+                neighborhood: results[0].address_components[2].long_name ,
+                city: results[0].address_components[3].long_name ,
+                state: results[0].address_components[4].short_name,
+                country: results[0].address_components[5].long_name,
+              };
+          }else{
+            address={
+              num: '',
+              street: results[0].address_components[0].long_name,
+              neighborhood: '',
+              city: results[0].address_components[1].long_name ,
+              state: results[0].address_components[2].short_name,
+              country: results[0].address_components[3].long_name,
+            };
+          }
         }
          
          document.getElementById("placeRegisterMapAddress").innerHTML = "Endereço: "+address.street+', '+address.num+' - '+address.neighborhood;
